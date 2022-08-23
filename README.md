@@ -1,2 +1,2 @@
-# api.breve.krotesq.com
+# breve-api
 Breve backend
