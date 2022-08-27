@@ -16,17 +16,9 @@ const post = (req, res) => {
     
     // create new short link func / add to db
 
-
-    // res.status(201).json(response(true, "Link created", {
-    //     uid: id,
-    //     timestamp: timestamp,
-    //     long_url: long_url,
-    //     short_url: `breve.app/${id}`,
-    //     auth: null
-    // }));
-    
+    // send response
     const data = buildData(id, timestamp, long_url, `breve.app/${id}`);
-    res.status(201).json(response(true, "test message", data));
+    res.status(201).json(response(true, "Link created", data));
 }
 
 module.exports = {

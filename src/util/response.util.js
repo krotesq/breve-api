@@ -7,7 +7,6 @@ const buildData = (id, timestamp, long_url, short_url, auth = null) => {
         auth: auth
     }
 }
-
 const response = (success, msg, data = {}) => {
     return {
         success: success,
@@ -15,4 +14,7 @@ const response = (success, msg, data = {}) => {
         data: data
     }
 }
-module.exports = {response, buildData};
+module.exports = {
+    response, 
+    buildData
+};
