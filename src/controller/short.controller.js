@@ -9,7 +9,7 @@ const post = (req, res) => {
     const id = uid();
     const timestamp = Date.now();
     const long_url = req.body.url;
-    const short_url = `${process.env.SHORTLINK_BASE + id}`;
+    const short_url = process.env.SHORTLINK_BASE + id;
 
     if(!long_url) {
         return res.status(400).json(response(false, 'no url to shorten found'))
