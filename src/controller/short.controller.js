@@ -9,6 +9,7 @@ const post = (req, res) => {
     const id = uid();
     const timestamp = Date.now();
     const long_url = req.body.url;
+    const short_url = `${process.env.SHORTLINK_BASE + id}`;
 
     if(!long_url) {
         return res.status(400).json(response(false, 'no url to shorten found'))
@@ -17,7 +18,7 @@ const post = (req, res) => {
     // create new short link func / add to db
 
     // send response
-    const data = buildData(id, timestamp, long_url, `breve.app/${id}`);
+    const data = buildData(id, timestamp, long_url, short_url);
     res.status(201).json(response(true, "Link created", data));
 }
 
