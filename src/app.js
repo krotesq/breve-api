@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
+const mongoose = require('mongoose');
 require('dotenv').config();
 
 // import routes
@@ -23,8 +24,12 @@ app.use('/v1/short', routeShort);
 app.use('*', routeAll);
 
 // db init
+mongoose.connect(process.env.DB_URL, {useNewUrlParser: true, useUnifiedTopology: true});
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 // run
-app.listen(process.env.PORT || 3001, () => {
-    console.log('[+] Server running on port 3001')
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+    console.log(`[+] Server running on port ${PORT}`);
 })
