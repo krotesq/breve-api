@@ -21,8 +21,10 @@ const post = (req, res) => {
     // create new short link func / add to db
     const entry_instance = new Entry({ id: id, timestamp: timestamp, long_url: long_url, short_url: short_url, auth: auth });
     entry_instance.save((err) => {
-    if (err) return handleError(err);
-        console.log("test");
+        if(err) {
+            return handleError(err);
+        }
+        console.log(`[+] entry was added to database successfully`);
     });
 
     // send response
