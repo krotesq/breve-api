@@ -19,7 +19,7 @@ const post = (req, res) => {
         if(err) {
             return handleError(err);
         }
-        console.log(`[+] entry was added to database successfully`);
+        console.log(`[+] entry was successfully added to database`);
     });
 
     // send response
