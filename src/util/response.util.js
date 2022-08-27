@@ -1,8 +1,7 @@
-const generateResponse = (success, message, data = {}) => {
+module.exports = (success, message, data = {}) => {
     return {
         success: success,
         msg: message,
         data: data
     }
 }
-module.exports = generateResponse;
