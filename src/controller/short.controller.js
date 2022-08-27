@@ -17,7 +17,7 @@ const post = (req, res) => {
     const entry_instance = new Entry({ id: id, timestamp: timestamp, long_url: long_url, short_url: short_url, auth: auth });
     entry_instance.save((err) => {
         if(err) {
-            return handleError(err);
+            return res.status(500).json(response(false, "internal server error", err));
         }
         console.log(`[+] entry was successfully added to database`);
     });
