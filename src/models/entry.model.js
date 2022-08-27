@@ -6,7 +6,10 @@ const entrySchema = new Schema({
     timestamp: String,
     long_url: String,
     short_url: String,
-    auth: String
+    auth: {
+        type: String,
+        default: null   
+    }
 });
 
 module.exports = mongoose.model('Entry', entrySchema);
