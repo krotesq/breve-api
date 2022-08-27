@@ -7,11 +7,6 @@ const get = (req, res) => {
 }
 
 const post = (req, res) => {
-    // check if long url is passed
-    if(!req.body.url) {
-        return res.status(400).json(response(false, 'no url to shorten found'));
-    }
-
     const id = uid();
     const timestamp = Date.now();
     const long_url = req.body.url;
