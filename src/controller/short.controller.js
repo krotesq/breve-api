@@ -24,7 +24,7 @@ const post = (req, res) => {
 
     // send response
     const data = buildData(id, timestamp, long_url, short_url);
-    res.status(201).json(response(true, "Link created", data));
+    return res.status(201).json(response(true, "Link created", data));
 }
 
 module.exports = {
