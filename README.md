@@ -2,6 +2,12 @@
 
 Breve backend
 
+## ToDo`s
+
+- edit util function "uid()", that it will generate unique id`s which dont exists
+- GET method
+- rework response, if entry already exists 
+
 ## .env variables
 
 PORT -> defines the port the server is listening to
