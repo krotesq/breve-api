@@ -22,7 +22,6 @@ app.use(cors());
 app.use('/v1/short', routeShort);
 app.use('*', routeAll);
 
-
 // db init
 
 // run

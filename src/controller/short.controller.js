@@ -1,4 +1,4 @@
-const response = require('../util/response.util');
+const {response, buildData} = require('../util/response.util');
 const uid = require('../util/uid.util');
 
 const get = (req, res) => {
@@ -7,11 +7,26 @@ const get = (req, res) => {
 
 const post = (req, res) => {
     const id = uid();
-    res.status(201).json(response(true, "Link created", {
-        long_url: 'test.com',
-        short_url: `breve.app/${id}`,
-        uid: id
-    }));
+    const timestamp = Date.now();
+    const long_url = req.body.url;
+
+    if(!long_url) {
+        return res.status(400).json(response(false, 'no url to shorten found'))
+    } 
+    
+    // create new short link func / add to db
+
+
+    // res.status(201).json(response(true, "Link created", {
+    //     uid: id,
+    //     timestamp: timestamp,
+    //     long_url: long_url,
+    //     short_url: `breve.app/${id}`,
+    //     auth: null
+    // }));
+    
+    const data = buildData(id, timestamp, long_url, `breve.app/${id}`);
+    res.status(201).json(response(true, "test message", data));
 }
 
 module.exports = {
