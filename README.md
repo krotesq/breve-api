@@ -25,6 +25,8 @@ DB_URL -> defines the mongodb connectionm string including the collection name a
 
 ### GET
 
+- query param: "url" to find single entry for param - e.g api.breve.app/v1/short?url=http://adasdsada
+
 
 ### POST
 

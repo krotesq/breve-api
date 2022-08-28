@@ -3,11 +3,18 @@ const uid = require('../util/uid.util');
 const Entry = require('../models/entry.model');
 
 const get = async (req, res) => {
-    let entries = await Entry.find({}, 'id timestamp long_url short_url auth', null);
-    if(entries.length > 0) {
-        return res.status(200).json(response(true, "no entries found", {entries: entries}));
+    const {url} = req.query;
+    let entries;
+    if(url) {
+        entries = await Entry.find({long_url: url}, 'id timestamp long_url short_url auth', null);
+    } else {
+        entries = await Entry.find({}, 'id timestamp long_url short_url auth', null);
     }
-    return res.status(200).json(response(true, "ok", {entries: entries}));
+    
+    if(entries.length > 0) {
+        return res.status(200).json(response(true, "entries found", {entries: entries}));
+    }
+    return res.status(200).json(response(true, "no entries found", {entries: entries}));
 }
 
 const post = (req, res) => {
