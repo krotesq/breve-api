@@ -15,7 +15,7 @@ module.exports = (req, res, next) => {
             // entry already exists
             const entry = entries[0];
             const data = buildData(entry.id, entry.timestamp, entry.long_url, entry.short_url, entry.auth);
-            return res.status(200).json(response(false, 'entry already exists', data));
+            return res.status(409).json(response(false, 'entry already exists', data));
         } else {
             // create new one
             next();
