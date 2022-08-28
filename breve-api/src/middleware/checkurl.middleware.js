@@ -1,6 +1,5 @@
 // Middleware to check if passed URL has already been shortened
-
-const {response} = require('../util/response.util');
+const response = require('../util/response.util');
 const Entry = require('../models/entry.model');
 
 module.exports = (req, res, next) => {
