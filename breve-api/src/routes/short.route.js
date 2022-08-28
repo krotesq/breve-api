@@ -4,8 +4,9 @@ const router = express.Router();
 const { get, post } = require('../controller/short.controller');
 // middleware
 const checkurl = require('../middleware/checkurl.middleware');
+const checkbody = require('../middleware/checkbody.middleware');
 
 router.get('/', get);
-router.post('/', checkurl, post);
+router.post('/', checkbody, checkurl, post);
 
 module.exports = router;
