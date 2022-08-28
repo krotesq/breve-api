@@ -9,8 +9,11 @@ const get = async (req, res) => {
     if (url) {
         search = {'longUrl': url};
     }
-    else if(code) {
+    else if (code) {
         search = {_id: code};
+    }
+    else {
+        return res.status(404).json(response(false, 'No entry found'));
     }
 
     const entry = await Entry.findOne(search, null);
@@ -18,6 +21,7 @@ const get = async (req, res) => {
     if (entry) {
         return res.status(200).json(response(true, 'Entry found', entry));
     }
+
     return res.status(404).json(response(false, 'No entry found'));
 }
 
@@ -30,16 +34,16 @@ const post = (req, res) => {
     
     // create new short link func / add to db
     const entry = new Entry({ _id: id, timestamp, longUrl, shortUrl, auth });
+    console.log(entry);
     entry.save((err) => {
-        if(err) {
+        if (err) {
             return res.status(500).json(response(false, "Internal server error", err));
         }
         console.log(`[+] Entry was successfully added to database`);
+        // send response
+        const data = buildData(id, timestamp, longUrl, shortUrl);
+        return res.status(201).json(response(true, "Link created", data));
     });
-
-    // send response
-    const data = buildData(id, timestamp, long_url, short_url);
-    return res.status(201).json(response(true, "Link created", data));
 }
 
 module.exports = {

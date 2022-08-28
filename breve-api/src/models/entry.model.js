@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 const entrySchema = new Schema({
     _id: String,
     timestamp: String,
-    long_url: String,
-    short_url: String,
+    longUrl: String,
+    shortUrl: String,
     auth: {
         type: String,
         default: null   

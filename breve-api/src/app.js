@@ -17,7 +17,9 @@ app.use(express.json());
 
 // 3rd party middleware
 app.use(morgan('tiny'));
-app.use(cors());
+app.use(cors({
+    origin: '*'
+}));
 
 // routes
 app.use('/v1/short', routeShort);
