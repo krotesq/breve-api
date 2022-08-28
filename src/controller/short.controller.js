@@ -2,8 +2,10 @@ const {response, buildData} = require('../util/response.util');
 const uid = require('../util/uid.util');
 const Entry = require('../models/entry.model');
 
-const get = (req, res) => {
-    res.status(418).json(response(false, "I'm a teapot!"));
+const get = async (req, res) => {
+    let entries = await Entry.find({}, 'id timestamp long_url short_url auth', null);
+
+    res.status(200).json(response(true, "ok", {entries: entries}));
 }
 
 const post = (req, res) => {
