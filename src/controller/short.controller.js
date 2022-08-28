@@ -3,11 +3,13 @@ const uid = require('../util/uid.util');
 const Entry = require('../models/entry.model');
 
 const get = async (req, res) => {
-    const {url} = req.query;
+    const {url, code} = req.query;
     let search = {};
     let entries;
     if(url) {
         search = {long_url: url};
+    } else if(code) {
+        search = {_id: code};
     }
     entries = await Entry.find(search, 'id timestamp long_url short_url auth', null);
     
