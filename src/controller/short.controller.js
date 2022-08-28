@@ -4,12 +4,12 @@ const Entry = require('../models/entry.model');
 
 const get = async (req, res) => {
     const {url} = req.query;
+    let search = {};
     let entries;
     if(url) {
-        entries = await Entry.find({long_url: url}, 'id timestamp long_url short_url auth', null);
-    } else {
-        entries = await Entry.find({}, 'id timestamp long_url short_url auth', null);
+        search = {long_url: url};
     }
+    entries = await Entry.find(search, 'id timestamp long_url short_url auth', null);
     
     if(entries.length > 0) {
         return res.status(200).json(response(true, "entries found", {entries: entries}));
