@@ -3,36 +3,38 @@ const uid = require('../util/uid.util');
 const Entry = require('../models/entry.model');
 
 const get = async (req, res) => {
-    const {url, code} = req.query;
+    const { url, code } = req.query;
     let search = {};
-    let entries;
-    if(url) {
-        search = {long_url: url};
-    } else if(code) {
+
+    if (url) {
+        search = {'longUrl': url};
+    }
+    else if(code) {
         search = {_id: code};
     }
-    entries = await Entry.find(search, 'id timestamp long_url short_url auth', null);
+
+    const entry = await Entry.findOne(search, null);
     
-    if(entries.length > 0) {
-        return res.status(200).json(response(true, "entries found", {entries: entries}));
+    if (entry) {
+        return res.status(200).json(response(true, 'Entry found', entry));
     }
-    return res.status(200).json(response(true, "no entries found", {entries: entries}));
+    return res.status(404).json(response(false, 'No entry found'));
 }
 
 const post = (req, res) => {
     const id = uid();
     const timestamp = Date.now();
-    const long_url = req.body.url;
-    const short_url = process.env.SHORTLINK_BASE + id;
+    const longUrl = req.body.url;
+    const shortUrl = process.env.SHORTLINK_BASE + id;
     const auth = null;
     
     // create new short link func / add to db
-    const entry_instance = new Entry({ _id: id, timestamp: timestamp, long_url: long_url, short_url: short_url, auth: auth });
-    entry_instance.save((err) => {
+    const entry = new Entry({ _id: id, timestamp, longUrl, shortUrl, auth });
+    entry.save((err) => {
         if(err) {
-            return res.status(500).json(response(false, "internal server error", err));
+            return res.status(500).json(response(false, "Internal server error", err));
         }
-        console.log(`[+] entry was successfully added to database`);
+        console.log(`[+] Entry was successfully added to database`);
     });
 
     // send response

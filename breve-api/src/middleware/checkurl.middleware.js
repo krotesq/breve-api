@@ -4,12 +4,12 @@ const {response} = require('../util/response.util');
 const Entry = require('../models/entry.model');
 
 module.exports = (req, res, next) => {
-    Entry.findOne({'long_url': req.body.url}, (err, entry) => {
+    Entry.findOne({'longUrl': req.body.url}, (err, entry) => {
         if (err) {
             console.log(err);
         }
         if (entry) {
-            return res.status(409).json(response(false, 'Entry already exists', entry));
+            return res.status(200).json(response(false, 'Entry already exists', entry));
         }
         next();
     });
