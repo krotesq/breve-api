@@ -9,7 +9,7 @@ module.exports = (req, res, next) => {
     const long_url = req.body.url;
 
     // check if entry for long url already exists
-    const test = Entry.find({'long_url': long_url}, 'id timestamp long_url short_url auth', (err, entries) => {
+    const test = Entry.find({'long_url': long_url}, '_id timestamp long_url short_url auth', (err, entries) => {
         if(err) { /* db error */ }
         if(entries.length > 0) {
             // entry already exists

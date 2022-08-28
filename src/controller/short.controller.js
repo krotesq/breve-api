@@ -4,8 +4,10 @@ const Entry = require('../models/entry.model');
 
 const get = async (req, res) => {
     let entries = await Entry.find({}, 'id timestamp long_url short_url auth', null);
-
-    res.status(200).json(response(true, "ok", {entries: entries}));
+    if(entries.length > 0) {
+        return res.status(200).json(response(true, "no entries found", {entries: entries}));
+    }
+    return res.status(200).json(response(true, "ok", {entries: entries}));
 }
 
 const post = (req, res) => {
@@ -16,7 +18,7 @@ const post = (req, res) => {
     const auth = null;
     
     // create new short link func / add to db
-    const entry_instance = new Entry({ id: id, timestamp: timestamp, long_url: long_url, short_url: short_url, auth: auth });
+    const entry_instance = new Entry({ _id: id, timestamp: timestamp, long_url: long_url, short_url: short_url, auth: auth });
     entry_instance.save((err) => {
         if(err) {
             return res.status(500).json(response(false, "internal server error", err));
