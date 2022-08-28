@@ -21,7 +21,7 @@ DB_PASSWORD -> defines the dabase password for the username
 DB_URL -> defines the mongodb connectionm string including the collection name at the end
 
 
-## /api/short
+## /v1/short
 
 ### GET
 
