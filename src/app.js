@@ -20,7 +20,7 @@ app.use(morgan('tiny'));
 app.use(cors());
 
 // routes
-app.use('/v1/short', routeShort);
+app.use('/api/short', routeShort);
 app.use('*', routeAll);
 
 // database connection
