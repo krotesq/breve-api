@@ -7,6 +7,6 @@ const checkUrl = require('../middleware/checkurl.middleware');
 const checkBody = require('../middleware/checkbody.middleware');
 
 router.get('/', get);
-router.post('/', checkBody, checkUrl, post);
+router.post('/', checkUrl, post); // fix checkBody
 
 module.exports = router;
