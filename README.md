@@ -12,7 +12,7 @@ Breve backend
 
 PORT -> defines the port the server is listening to
 
-SHORTLINK_BASE -> defines the base url of the short link e.g.: http://breve.app/
+DOMAIN -> defines the base url of the short link e.g.: http://breve.app/
 
 DB_USER -> defines the database user name
 
