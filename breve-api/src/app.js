@@ -23,7 +23,7 @@ app.use(cors({
 }));
 
 // routes
-app.use('/', routeRedirect);
+app.use('/:id', routeRedirect);
 app.use('/v1/short', routeShort);
 app.use('*', routeAll);
 
