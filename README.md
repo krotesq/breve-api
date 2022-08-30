@@ -43,10 +43,6 @@
 
 `DOMAIN` -> defines the base url of the short link e.g.: http://breve.app/
 
-`DB_USER` -> defines the database user name
-
-`DB_PASSWORD` -> defines the dabase password for the username
-
-`DB_URL` -> defines the mongodb connectionm string including the collection name at the end
+`DB_URL` -> defines the mongodb connectionm string including the username+pw and the database name at the end
 
 
