@@ -10,7 +10,7 @@
 
 #### Query-Params: `url, code` 
 
-- "url" : find entry by long url - e.g /v1/short?url=http://google.de
+- "url" : find entry by long url - e.g /v1/short?url=https://example.com
 - "code" : find entry by short code - e.g /v1/short?code=xfmga4
 
 
