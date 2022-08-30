@@ -10,9 +10,10 @@ module.exports = (req, res, next) => {
                 req.entry = entry;
                 req.searchQuery = search;
                 next();
+            } else {
+                return res.redirect(`${process.env.DOMAIN}`);
             }
         });
     }
-    return;
-    return res.redirect(`${process.env.DOMAIN}`);
+    return 
 }
