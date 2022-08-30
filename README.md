@@ -8,6 +8,8 @@
 
 #### Method: `GET`
 
+#### Auth required: `No`
+
 #### Query-Params: `url, code` 
 
 - `url` : find entry by long url - e.g /v1/short?url=https://example.com
@@ -19,6 +21,8 @@
 #### URL : `/v1/short`
 
 #### Method: `POST`
+
+#### Auth required: `No`
 
 #### POST-Data: 
 ```json 
