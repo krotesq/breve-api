@@ -9,7 +9,6 @@ module.exports = (req, res) => {
                 if(err) console.log(err);
                 return res.redirect("/");
             }
-            
         })
     }
 }
