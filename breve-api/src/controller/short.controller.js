@@ -3,26 +3,8 @@ const uid = require('../util/uid.util');
 const Entry = require('../models/entry.model');
 
 const get = async (req, res) => {
-    const { url, code } = req.query;
-    let search = {};
-
-    if (url) {
-        search = {'longUrl': url};
-    }
-    else if (code) {
-        search = {_id: code};
-    }
-    else {
-        return res.status(404).json(response(false, 'No entry found'));
-    }
-
-    const entry = await Entry.findOne(search, null);
-    
-    if (entry) {
-        return res.status(200).json(response(true, 'Entry found', entry));
-    }
-
-    return res.status(404).json(response(false, 'No entry found'));
+    const entry = req.entry;
+    return res.status(200).json(response(true, 'Entry found', entry));
 }
 
 const post = (req, res) => {

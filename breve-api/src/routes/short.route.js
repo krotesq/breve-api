@@ -6,8 +6,11 @@ const { get, post } = require('../controller/short.controller');
 const checkUrl = require('../middleware/checkurl.middleware');
 const checkBody = require('../middleware/checkbody.middleware');
 const validateUrl = require('../middleware/validateurl.middleware');
+const checkParams = require('../middleware/checkparams.middleware');
+const entryExists = require('../middleware/entryexists.middleware');
+const updateCount = require('../middleware/ccount.middleware');
 
-router.get('/', get);
+router.get('/', checkParams, entryExists, updateCount, get);
 router.post('/', checkBody, validateUrl, checkUrl, post);
 
 module.exports = router;
