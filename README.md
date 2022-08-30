@@ -2,7 +2,7 @@
 
 ## Methods
 
-## Get Entries
+### Get Entries
 
 #### URL : `/v1/short`
 
@@ -14,7 +14,7 @@
 - "code" : find entry by short code - e.g /v1/short?code=xfmga4
 
 
-## Create Entry
+### Create Entry
 
 #### URL : `/v1/short`
 
