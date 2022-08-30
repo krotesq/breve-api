@@ -7,6 +7,7 @@ require('dotenv').config();
 // import routes
 const routeAll = require('./routes/all.route');
 const routeShort = require('./routes/short.route');
+const routeRedirect = require('./routes/redirect.route');
 
 // app init
 const app = express();
@@ -22,6 +23,7 @@ app.use(cors({
 }));
 
 // routes
+app.use('/', routeRedirect);
 app.use('/v1/short', routeShort);
 app.use('*', routeAll);
 

@@ -34,7 +34,6 @@
 ## ToDo`s
 
 - edit util function "uid()", that it will generate unique id`s which dont exists
-- GET method
 - rework responses (status codes etc)
 
 ## .env variables
