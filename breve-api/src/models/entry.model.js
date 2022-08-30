@@ -9,6 +9,10 @@ const entrySchema = new Schema({
     auth: {
         type: String,
         default: null   
+    },
+    ccount: {
+        type: Number,
+        default: 0
     }
 });
 
