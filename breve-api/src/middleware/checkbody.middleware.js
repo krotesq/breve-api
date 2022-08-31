@@ -6,5 +6,6 @@ module.exports = (req, res, next) => {
     if(!req.body.url) {
         return res.status(400).json(response(false, 'Missing URL in request body'));
     }
+    req.url = req.body.url;
     next();
 }

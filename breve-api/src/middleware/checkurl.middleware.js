@@ -3,7 +3,7 @@ const response = require('../util/response.util');
 const Entry = require('../models/entry.model');
 
 module.exports = (req, res, next) => {
-    Entry.findOne({'longUrl': req.body.url}, (err, entry) => {
+    Entry.findOne({'longUrl': req.url}, (err, entry) => {
         if (err) {
             console.log(err);
         }
