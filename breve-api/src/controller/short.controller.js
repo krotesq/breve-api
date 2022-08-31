@@ -10,7 +10,7 @@ const get = async (req, res) => {
 const post = (req, res) => {
     const _id = uid();
     const timestamp = Date.now();
-    const longUrl = req.body.url;
+    const longUrl = req.url;
     const shortUrl = `${process.env.DOMAIN}/${_id}`;
     const auth = null;
     
