@@ -44,4 +44,6 @@
 
 `DB_URL` -> defines the mongodb connectionm string including the username+pw and the database name at the end
 
+`ID_MAX_CHARS` -> defines the max allowed length of a custom id
+
 

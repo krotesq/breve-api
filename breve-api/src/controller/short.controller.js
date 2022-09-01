@@ -17,6 +17,10 @@ const post = async (req, res) => {
         if(!xy) break;
     }
 
+    if(req.cid) {
+        _id = req.cid;
+    }
+
     const timestamp = Date.now();
     const longUrl = req.url;
     const shortUrl = `${process.env.DOMAIN}/${_id}`;
