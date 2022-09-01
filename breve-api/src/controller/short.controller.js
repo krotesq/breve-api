@@ -8,17 +8,20 @@ const get = async (req, res) => {
 }
 
 const post = async (req, res) => {
-    let _id = uid();
-    let xy = await Entry.findById(_id);
-
-    while(xy) {
-        _id = uid();
-        xy = await Entry.findById(_id);
-        if(!xy) break;
-    }
-
+    let _id;
+    let xy;
+    
     if(req.cid) {
         _id = req.cid;
+    } else {
+        _id = uid();
+        xy = await Entry.findById(_id);
+    
+        while(xy) {
+            _id = uid();
+            xy = await Entry.findById(_id);
+            if(!xy) break;
+        }
     }
 
     const timestamp = Date.now();
