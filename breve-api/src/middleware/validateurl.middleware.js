@@ -8,7 +8,7 @@ module.exports = (req, res, next) => {
     }
 
     if(req.url.includes(process.env.DOMAIN)) {
-        return res.status(400).json(response(false, 'Already shorted links cannot be shorted'));
+        return res.status(400).json(response(false, 'Already shorted links cannot be shorted again'));
     }
 
     // check for https:// or http://, if not add https://
