@@ -7,8 +7,16 @@ const get = async (req, res) => {
     return res.status(200).json(response(true, 'Entry found', entry));
 }
 
-const post = (req, res) => {
-    const _id = uid();
+const post = async (req, res) => {
+    let _id = uid();
+    let xy = await Entry.findById(_id);
+
+    while(xy) {
+        _id = uid();
+        xy = await Entry.findById(_id);
+        if(!xy) break;
+    }
+
     const timestamp = Date.now();
     const longUrl = req.url;
     const shortUrl = `${process.env.DOMAIN}/${_id}`;
