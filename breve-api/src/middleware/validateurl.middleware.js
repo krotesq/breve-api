@@ -7,6 +7,10 @@ module.exports = (req, res, next) => {
         return res.status(400).json(response(false, 'Wrong format'));
     }
 
+    if(req.url.includes(process.env.DOMAIN)) {
+        return res.status(400).json(response(false, 'Already shorted links cannot be shorted'));
+    }
+
     // check for https:// or http://, if not add https://
     if (!(req.url.includes('https://') || req.url.includes('http://'))) {
         req.url = `https://${req.url}`;
