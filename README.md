@@ -26,8 +26,11 @@
 
 #### POST-Data: 
 ```json 
-{"url": "https://example.com"} 
+{"url": "https://example.com", "cid": ""} 
 ```
+`url` : defines the longurl which is going to be shorten
+
+`cid` : optional param which defines a custom id for the short link
 
 # Development
 
