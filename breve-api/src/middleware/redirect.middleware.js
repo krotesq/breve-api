@@ -11,7 +11,7 @@ module.exports = (req, res, next) => {
                 req.searchQuery = search;
                 next();
             } else {
-                return res.redirect(`${process.env.DOMAIN}`);
+                return res.redirect(`https://${process.env.DOMAIN}`);
             }
         });
     }

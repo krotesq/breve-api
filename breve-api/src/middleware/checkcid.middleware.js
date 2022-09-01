@@ -5,10 +5,14 @@ const Entry = require('../models/entry.model');
 module.exports = (req, res, next) => {
     // check if entry already exists with url && cid
 
-    Entry.findOne({'longUrl': req.url}, (err, entry) => {
-        if(entry) {
-            return res.status(200).json(response(true, 'Entry already exists', entry));
-        }
+    if(req.cid) {
+        Entry.findOne({'_id': req.cid}, (err, entry) => {
+            if(entry) {
+                return res.status(200).json(response(false, 'Custom id already exists', entry));
+            }
+            next();
+        });
+    } else {
         next();
-    });
+    }
 }
