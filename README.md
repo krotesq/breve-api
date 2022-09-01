@@ -40,7 +40,7 @@
 
 `PORT` -> defines the port the server is listening to
 
-`DOMAIN` -> defines the base url of the short link e.g.: http://breve.app/
+`DOMAIN` -> defines the base url of the short link e.g.: breve.club
 
 `DB_URL` -> defines the mongodb connectionm string including the username+pw and the database name at the end
 
