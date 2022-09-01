@@ -8,7 +8,7 @@ module.exports = (req, res, next) => {
     if(req.cid) {
         Entry.findOne({'_id': req.cid}, (err, entry) => {
             if(entry) {
-                return res.status(200).json(response(true, 'Entry with cid already exists', entry));
+                return res.status(200).json(response(false, 'Custom id already exists', entry));
             }
             next();
         });
